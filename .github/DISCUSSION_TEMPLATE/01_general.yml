@@ -1,4 +1,18 @@
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ここにマークダウンで説明文などを書いてください。
+        改行も反映されます。
+        - 箇条書きもできます。
+        - 見出しもできます。
+          # 見出し1
+          ## 見出し2
+          ### 見出し3
+        - 画像も表示できます。
+        ![alt text](<スクリーンショット 2026-04-10 095907.png>)
+        - リンクも貼れます。
+          [Google](https://www.google.com)
   - type: textarea
     id: summary
     attributes:
