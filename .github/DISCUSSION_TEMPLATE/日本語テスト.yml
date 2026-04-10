@@ -1,7 +1,5 @@
-title: "[Actions] "
-labels:
-  - "discussion"
-  - "needs-triage"
+title: ""
+labels: "日本語テスト"
 
 body:
   # 1) markdown
