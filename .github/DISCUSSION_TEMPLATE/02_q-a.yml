@@ -1,10 +1,8 @@
-title: "[Q&A] "
 body:
   - type: markdown
     attributes:
       value: |
-        開発や実装業務に関することはもちろん、それ以外の相談も投稿できるカテゴリです。
-        同じ疑問を持つ人が後から参照できるように、背景や試したことも残してください。
+        なんでも質問箱です。
   - type: textarea
     id: question
     attributes:
