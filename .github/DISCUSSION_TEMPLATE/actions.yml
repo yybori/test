@@ -21,7 +21,7 @@ body:
     attributes:
       label: 要約
       description: 一行で内容を説明してください
-      placeholder: 例: ビルド高速化の提案
+      placeholder: "例: ビルド高速化の提案"
       value: ""
     validations:
       required: true
