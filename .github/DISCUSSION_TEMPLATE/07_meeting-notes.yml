@@ -1,10 +1,10 @@
-title: "[Meeting Notes] "
 body:
   - type: markdown
     attributes:
       value: |
         会議・打ち合わせの記録を残すカテゴリです。
         後から見返しやすいように、決定事項とアクションを明確にしてください。
+        会議を行う前に作成し、後からの編集や返信で追記する使い方もできます。
   - type: input
     id: meeting-name
     attributes:
