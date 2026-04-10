@@ -1,10 +1,4 @@
-title: "[Ideas] "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        思いついたアイデアや提案をラフに共有するカテゴリです。
-        実現可能性が未確定でも問題ありません。発想の種を残すことを優先してください。
   - type: textarea
     id: idea
     attributes:
