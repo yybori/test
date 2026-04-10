@@ -23,4 +23,4 @@ body:
     attributes:
       label: 関連リンク・参考情報
       description: 参考になる文書やリンクがあれば記載してください。
-      placeholder: SharePoint、Slack、社内文書など
+      placeholder: SharePoint、Slackなど
