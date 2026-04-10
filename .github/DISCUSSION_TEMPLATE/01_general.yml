@@ -1,9 +1,4 @@
 body:
-  - type: markdown
-    attributes:
-      value: |
-        業務に直接は関係しなくても、知っておくと便利な情報を共有するためのカテゴリです。
-        投稿前に、必要に応じてラベルの設定も確認してください。
   - type: textarea
     id: summary
     attributes:
