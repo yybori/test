@@ -1,4 +1,5 @@
 title: "[General] "
+labels: "bug"
 body:
   - type: markdown
     attributes:
