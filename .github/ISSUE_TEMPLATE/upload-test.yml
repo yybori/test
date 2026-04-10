@@ -1,0 +1,49 @@
+name: Upload test
+description: Test issue form for verifying upload field behavior
+title: "[Upload Test]: "
+labels:
+  - test
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Upload field test
+        この Issue Form は `upload` フィールドの表示と送信結果を確認するためのテスト用です。
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: テスト内容を短く書いてください
+      placeholder: 例: upload field renders correctly
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: 実施内容や確認したい点を記載してください
+      placeholder: 例: png と log を添付して挙動を確認する
+    validations:
+      required: true
+
+  - type: upload
+    id: attachments
+    attributes:
+      label: Attachments
+      description: スクリーンショットやログファイルを添付してください
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.log,.txt,.json,.zip,.pdf"
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      description: 事前確認
+      options:
+        - label: I confirmed that the upload control is visible
+        - label: I attached at least one file for testing
+        - label: I reviewed the created issue body after submission
