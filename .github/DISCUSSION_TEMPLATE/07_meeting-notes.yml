@@ -18,7 +18,6 @@ body:
     attributes:
       label: アジェンダ
       description: 何を話すか、話したかを簡潔にまとめてください。
-      value: "- 議題"
       placeholder: |
         - 議題1
         - 議題2
