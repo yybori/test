@@ -1,10 +1,4 @@
-title: "[Showcase] "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        作成したツールやワークフロー、成果物を共有するカテゴリです。
-        他の人が使いやすいように、概要と使い方を分かる形で書いてください。
   - type: input
     id: artifact-name
     attributes:
