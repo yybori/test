@@ -7,13 +7,13 @@ body:
   # 1) markdown
   - type: markdown
     attributes:
-      value: |
+      value: "
         ## ご投稿ありがとうございます
         このフォームは GitHub Discussions の category form の
         利用可能なスキーマ要素をできるだけ網羅したサンプルです。
 
         - markdown は説明表示用で、投稿本文には入力項目としては含まれません
-        - 以下の各要素は送信時に Markdown に変換されて Discussion 本文に入ります
+        - 以下の各要素は送信時に Markdown に変換されて Discussion 本文に入ります"
 
   # 2) input
   - type: input
@@ -112,7 +112,7 @@ body:
       description: スクリーンショット、ログ、サンプルファイルを添付してください
     validations:
       required: false
-      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.tar.gz,.pdf"
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.tar,.gz,.pdf"
 
   # 9) markdown again
   - type: markdown
