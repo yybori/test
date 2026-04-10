@@ -1,10 +1,4 @@
-title: "[Design & Specs] "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        設計や仕様に関する検討内容を整理・共有するカテゴリです。
-        議論の前提、検討事項、決定事項や未決事項が分かるように記載してください。
   - type: input
     id: target
     attributes:
