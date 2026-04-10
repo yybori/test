@@ -28,4 +28,4 @@ body:
     attributes:
       label: 関連リンク
       description: Slack のやり取りや参考リンクがあれば添付してください。
-      placeholder: Slack スレッド、ドキュメントなど
+      placeholder: Slack スレッド、ドキュメント、スクショなど
