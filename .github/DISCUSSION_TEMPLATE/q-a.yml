@@ -1,119 +1,33 @@
-labels: "00_全般"
-
+title: "[Q&A] "
 body:
-  # 1) markdown
   - type: markdown
     attributes:
       value: |
-        ## ご投稿ありがとうございます
-        このフォームは GitHub Discussions の category form の
-        利用可能なスキーマ要素をできるだけ網羅したサンプルです。
-
-        - markdown は説明表示用で、投稿本文には入力項目としては含まれません
-        - 以下の各要素は送信時に Markdown に変換されて Discussion 本文に入ります
-
-  # 2) input
-  - type: input
-    id: short_summary
-    attributes:
-      label: 要約
-      description: 一行で内容を説明してください
-      placeholder: "例: ビルド高速化の提案"
-      value: "value"
-    validations:
-      required: true
-
-  # 3) textarea
+        開発や実装業務に関することはもちろん、それ以外の相談も投稿できるカテゴリです。
+        同じ疑問を持つ人が後から参照できるように、背景や試したことも残してください。
   - type: textarea
-    id: details
+    id: question
     attributes:
-      label: 詳細
-      description: 背景、現状、期待することを自由に記載してください
-      placeholder: |
-        例:
-        - 背景
-        - 課題
-        - 提案内容
-      value: |
-        背景:
-        課題:
-        提案:
-      render: markdown
+      label: 質問・相談内容
+      description: 何に困っているか、何を知りたいかを書いてください。
+      placeholder: 発生している問題や、相談したい内容
     validations:
       required: true
-
-  # 4) textarea with codeblock rendering
   - type: textarea
-    id: logs
+    id: background
     attributes:
-      label: ログや再現手順
-      description: 必要に応じてログ、CLI 出力、再現コマンドなどを貼ってください
-      placeholder: |
-        npm run build
-        ...
-      render: bash
-    validations:
-      required: false
-
-  # 5) dropdown single select
-  - type: dropdown
-    id: category_fit
+      label: 背景
+      description: 前提条件や経緯があれば書いてください。
+      placeholder: 対象機能、利用環境、関連する業務背景など
+  - type: textarea
+    id: tried
     attributes:
-      label: この投稿の種類
-      description: 最も近いものを選んでください
-      multiple: false
-      options:
-        - 質問
-        - 提案
-        - ナレッジ共有
-        - 不具合相談
-      default: 0
-    validations:
-      required: true
-
-  # 6) dropdown multi select
-  - type: dropdown
-    id: affected_area
+      label: 試したこと
+      description: すでに確認した内容や試行した内容があれば書いてください。
+      placeholder: 調査済みの資料、試した手順、確認したログなど
+  - type: textarea
+    id: references
     attributes:
-      label: 関連領域
-      description: 該当する領域をすべて選択してください
-      multiple: true
-      options:
-        - Documentation
-        - CI
-        - Backend
-        - Frontend
-        - API
-        - Developer Experience
-      default: 1
-    validations:
-      required: false
-
-  # 7) checkboxes
-  - type: checkboxes
-    id: confirmations
-    attributes:
-      label: 確認事項
-      description: 投稿前に確認してください
-      options:
-        - label: 既存の Discussions / Issues を確認しました
-          required: true
-        - label: この内容はこのカテゴリに適切です
-        - label: 必要なら追加情報を返信できます
-
-  # 8) upload
-  - type: upload
-    id: attachments
-    attributes:
-      label: 添付ファイル
-      description: スクリーンショット、ログ、サンプルファイルを添付してください
-    validations:
-      required: false
-      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.gz,.pdf"
-
-  # 9) markdown again
-  - type: markdown
-    attributes:
-      value: |
-        ### 送信前の補足
-        必須項目を埋めると投稿できます。ありがとうございます。
+      label: 関連リンク
+      description: Slack のやり取りや参考リンクがあれば添付してください。
+      placeholder: Slack スレッド、ドキュメント、チケットなど

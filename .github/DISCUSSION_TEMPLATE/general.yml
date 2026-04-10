@@ -1,0 +1,32 @@
+title: "[General] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        業務に直接は関係しなくても、知っておくと便利な情報を共有するためのカテゴリです。
+        投稿前に、必要に応じてラベルの設定も確認してください。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: まず何について共有するのかを簡潔に書いてください。
+      placeholder: 出張時の手続きや、チーム内でよく使うルールなど
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 内容
+      description: 後から読む人が分かるように、背景や詳細を書いてください。
+      placeholder: |
+        - 何の情報か
+        - どういう場面で役立つか
+        - 補足事項
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 関連リンク・参考情報
+      description: 参考になる文書やリンクがあれば記載してください。
+      placeholder: SharePoint、Slack、社内文書など

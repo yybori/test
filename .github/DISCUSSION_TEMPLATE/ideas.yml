@@ -1,0 +1,32 @@
+title: "[Ideas] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        思いついたアイデアや提案をラフに共有するカテゴリです。
+        実現可能性が未確定でも問題ありません。発想の種を残すことを優先してください。
+  - type: textarea
+    id: idea
+    attributes:
+      label: アイデアの概要
+      description: どんなアイデアかを簡潔に書いてください。
+      placeholder: こういう仕組みやツールがあると便利、など
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 背景・解決したいこと
+      description: なぜそのアイデアを思いついたのかを書いてください。
+      placeholder: 現状困っていること、改善したいこと
+  - type: textarea
+    id: effect
+    attributes:
+      label: 期待する効果
+      description: 実現した場合にどんなメリットがあるかを書いてください。
+      placeholder: 工数削減、確認漏れ防止、情報共有のしやすさ向上など
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足
+      description: 実装案、参考例、関連リンクなどがあれば自由に記載してください。

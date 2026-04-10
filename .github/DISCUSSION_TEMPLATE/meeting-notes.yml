@@ -1,0 +1,54 @@
+title: "[Meeting Notes] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        会議・打ち合わせの記録を残すカテゴリです。
+        後から見返しやすいように、決定事項とアクションを明確にしてください。
+  - type: input
+    id: meeting-name
+    attributes:
+      label: 会議名
+      description: 会議や打ち合わせの名称を書いてください。
+      placeholder: "例: 週次進捗会"
+    validations:
+      required: true
+  - type: input
+    id: meeting-date
+    attributes:
+      label: 開催日時
+      description: 会議の日時を書いてください。
+      placeholder: 2026-04-10 10:00-11:00
+    validations:
+      required: true
+  - type: textarea
+    id: participants
+    attributes:
+      label: 参加者
+      description: 参加者を列挙してください。
+      placeholder: 氏名、チーム名など
+  - type: textarea
+    id: agenda
+    attributes:
+      label: 議題
+      description: 何を話したかを簡潔にまとめてください。
+      placeholder: 議題1、議題2、議題3
+    validations:
+      required: true
+  - type: textarea
+    id: decisions-actions
+    attributes:
+      label: 決定事項・ToDo
+      description: 決定事項と、誰が何をするかを書いてください。
+      placeholder: |
+        - 決定事項
+        - ToDo
+        - 担当者
+        - 期限
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: 関連リンク
+      description: SharePoint や関連資料のリンクがあれば記載してください。

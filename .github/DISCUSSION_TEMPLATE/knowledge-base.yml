@@ -1,0 +1,37 @@
+title: "[Knowledge Base] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        業務や技術の知識、Tips、手順、解決方法などを共有するカテゴリです。
+        読んだ人が再現できるように、結論と手順を明確に書いてください。
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: 結論・要点
+      description: まず最初に、何が分かったのかを簡潔に書いてください。
+      placeholder: "例: ○○ の設定を変更することで解決した"
+    validations:
+      required: true
+  - type: textarea
+    id: procedure
+    attributes:
+      label: 手順・詳細
+      description: 実際の手順や詳細な内容を書いてください。
+      placeholder: |
+        1. 前提条件
+        2. 実施手順
+        3. 注意点
+    validations:
+      required: true
+  - type: textarea
+    id: applicability
+    attributes:
+      label: 適用場面・注意点
+      description: どのようなケースで役立つか、注意点があれば書いてください。
+      placeholder: 対象バージョン、前提環境、制約など
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考リンク
+      description: 参考にしたサイト、文書、書籍などがあれば記載してください。

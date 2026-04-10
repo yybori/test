@@ -1,0 +1,48 @@
+title: "[Design & Specs] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        設計や仕様に関する検討内容を整理・共有するカテゴリです。
+        議論の前提、検討事項、決定事項や未決事項が分かるように記載してください。
+  - type: input
+    id: target
+    attributes:
+      label: 対象
+      description: どの機能・業務・文書についての設計/仕様かを書いてください。
+      placeholder: "例: 法人税申告データ取込機能"
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: 検討の背景や目的を書いてください。
+      placeholder: 現行課題、対応理由、関連する要望など
+    validations:
+      required: true
+  - type: textarea
+    id: discussion-points
+    attributes:
+      label: 検討事項
+      description: 論点や確認したいポイントを列挙してください。
+      placeholder: |
+        1. 論点
+        2. 比較案
+        3. 判断したい内容
+    validations:
+      required: true
+  - type: textarea
+    id: decisions
+    attributes:
+      label: 決定事項・未決事項
+      description: 決まっていること、今後詰めることを整理して書いてください。
+      placeholder: |
+        - 決定事項
+        - 未決事項
+        - 次回までの宿題
+  - type: textarea
+    id: references
+    attributes:
+      label: 関連資料
+      description: 設計書、仕様書、参考リンクなどがあれば記載してください。
