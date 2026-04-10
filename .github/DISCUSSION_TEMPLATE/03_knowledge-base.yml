@@ -1,9 +1,8 @@
-title: "[Knowledge Base] "
 body:
   - type: markdown
     attributes:
       value: |
-        業務や技術の知識、Tips、手順、解決方法などを共有するカテゴリです。
+        業務や技術の知識、Tips、手順、解決方法などを共有します。
         読んだ人が再現できるように、結論と手順を明確に書いてください。
   - type: textarea
     id: conclusion
