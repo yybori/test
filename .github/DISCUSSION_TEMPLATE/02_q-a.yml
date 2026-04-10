@@ -22,10 +22,10 @@ body:
     attributes:
       label: 試したこと
       description: すでに確認した内容や試行した内容があれば書いてください。
-      placeholder: 調査済みの資料、試した手順、確認したログなど
+      placeholder: 調査済みの資料、試した手順、確認したログやスクショなど
   - type: textarea
     id: references
     attributes:
       label: 関連リンク
       description: Slack のやり取りや参考リンクがあれば添付してください。
-      placeholder: Slack スレッド、ドキュメント、スクショなど
+      placeholder: Slack スレッド、ドキュメントなど
