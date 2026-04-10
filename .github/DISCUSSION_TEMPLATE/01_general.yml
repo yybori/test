@@ -18,9 +18,9 @@ body:
       label: 内容
       description: 後から読む人が分かるように、背景や詳細を書いてください。
       placeholder: |
-        - 何の情報か
-        - どういう場面で役立つか
-        - 補足事項
+        - 何の情報か  
+        - どういう場面で役立つか  
+        - 補足事項  
     validations:
       required: true
   - type: textarea
