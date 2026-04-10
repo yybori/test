@@ -25,7 +25,7 @@ body:
     attributes:
       label: Details
       description: 実施内容や確認したい点を記載してください
-      placeholder: 例: png と log を添付して挙動を確認する
+      placeholder: "例: png と log を添付して挙動を確認する"
     validations:
       required: true
 
