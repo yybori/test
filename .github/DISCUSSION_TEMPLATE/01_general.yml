@@ -10,7 +10,9 @@ body:
           ## 見出し2
           ### 見出し3
         - Github文書用の形式で記載すれば画像も表示できます。
+        
         <img width="182" height="200" alt="PCA_character_顔_カラー10" src="https://github.com/user-attachments/assets/8e5f355b-f98d-4a62-8746-e7b598b7097f" />
+        
         - リンクも貼れます。
           [Google](https://www.google.com)
   - type: textarea
