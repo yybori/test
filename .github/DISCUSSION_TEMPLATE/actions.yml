@@ -112,7 +112,7 @@ body:
       description: スクリーンショット、ログ、サンプルファイルを添付してください
     validations:
       required: false
-      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.tar,.gz,.pdf"
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.gz,.pdf"
 
   # 9) markdown again
   - type: markdown
