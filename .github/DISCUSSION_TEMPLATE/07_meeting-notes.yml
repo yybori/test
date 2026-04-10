@@ -10,15 +10,9 @@ body:
     attributes:
       label: 会議名
       description: 会議や打ち合わせの名称を書いてください。
-      placeholder: "例: 週次進捗会"
+      placeholder: "例：期末振り返りミーティング"
     validations:
       required: true
-  - type: textarea
-    id: participants
-    attributes:
-      label: 参加者
-      description: 参加者を列挙してください。
-      placeholder: 氏名、チーム名など
   - type: textarea
     id: agenda
     attributes:
