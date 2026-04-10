@@ -7,7 +7,13 @@ body:
   # 1) markdown
   - type: markdown
     attributes:
-      value: "このフォームは GitHub Discussions の category form の利用可能なスキーマ要素をできるだけ網羅したサンプルです。"
+      value: |
+        Welcome! This space is **just** for introductions! So say hi and share what you’re excited about here on GitHub.
+        - **Quick nudge:** if your post is really “how do I use GitHub?” or troubleshooting something, please use [**New to GitHub**](https://github.com/community/community/discussions/categories/new-to-github) (or the [most relevant help category](https://github.com/community/community/discussions)) so you can get the best answers.
+        - **Privacy & safety:** please don’t share sensitive personal info (addresses, phone numbers, private emails, etc.).
+        - **One intro per person:** make one intro post and feel free to add updates as replies anytime.
+
+        Keep it friendly and human: a couple links are fine, but no link-dumping, recruiting, or promo-only posts.
 
   # 2) input
   - type: input
