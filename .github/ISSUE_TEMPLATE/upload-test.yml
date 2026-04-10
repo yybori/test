@@ -16,7 +16,7 @@ body:
     attributes:
       label: Summary
       description: テスト内容を短く書いてください
-      placeholder: 例: upload field renders correctly
+      placeholder: "例: upload field renders correctly"
     validations:
       required: true
 
