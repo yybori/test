@@ -1,8 +1,3 @@
-title: "[Actions] "
-labels:
-  - "discussion"
-  - "needs-triage"
-
 body:
   # 1) markdown
   - type: markdown
@@ -112,7 +107,7 @@ body:
       description: スクリーンショット、ログ、サンプルファイルを添付してください
     validations:
       required: false
-      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.gz,.pdf"
+      accept: ".png,.jpg,.jpeg,.gif,.json,.zip,.md,.pdf"
 
   # 9) markdown again
   - type: markdown
