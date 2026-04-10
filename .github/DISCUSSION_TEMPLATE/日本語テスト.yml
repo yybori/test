@@ -1,15 +1,122 @@
----
-name: 日本語テスト
-about: これは日本語テスト用のディスカッションテンプレートです
-title: 日本語テストのタイトル
-labels: [日本語, テスト]
----
+title: "[Actions] "
+labels:
+  - "discussion"
+  - "needs-triage"
 
-## はじめに
-ここにディスカッションの内容を入力してください。
+body:
+  # 1) markdown
+  - type: markdown
+    attributes:
+      value: |
+        ## ご投稿ありがとうございます
+        このフォームは GitHub Discussions の category form の
+        利用可能なスキーマ要素をできるだけ網羅したサンプルです。
 
-## 質問
-詳しい質問をここに書いてください。
+        - markdown は説明表示用で、投稿本文には入力項目としては含まれません
+        - 以下の各要素は送信時に Markdown に変換されて Discussion 本文に入ります
 
-## 追加情報
-関連するリンクやリソースをここに追加してください。
+  # 2) input
+  - type: input
+    id: short_summary
+    attributes:
+      label: 要約
+      description: 一行で内容を説明してください
+      placeholder: "例: ビルド高速化の提案"
+      value: "value"
+    validations:
+      required: true
+
+  # 3) textarea
+  - type: textarea
+    id: details
+    attributes:
+      label: 詳細
+      description: 背景、現状、期待することを自由に記載してください
+      placeholder: |
+        例:
+        - 背景
+        - 課題
+        - 提案内容
+      value: |
+        背景:
+        課題:
+        提案:
+      render: markdown
+    validations:
+      required: true
+
+  # 4) textarea with codeblock rendering
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログや再現手順
+      description: 必要に応じてログ、CLI 出力、再現コマンドなどを貼ってください
+      placeholder: |
+        npm run build
+        ...
+      render: bash
+    validations:
+      required: false
+
+  # 5) dropdown single select
+  - type: dropdown
+    id: category_fit
+    attributes:
+      label: この投稿の種類
+      description: 最も近いものを選んでください
+      multiple: false
+      options:
+        - 質問
+        - 提案
+        - ナレッジ共有
+        - 不具合相談
+      default: 0
+    validations:
+      required: true
+
+  # 6) dropdown multi select
+  - type: dropdown
+    id: affected_area
+    attributes:
+      label: 関連領域
+      description: 該当する領域をすべて選択してください
+      multiple: true
+      options:
+        - Documentation
+        - CI
+        - Backend
+        - Frontend
+        - API
+        - Developer Experience
+      default: 1
+    validations:
+      required: false
+
+  # 7) checkboxes
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 確認事項
+      description: 投稿前に確認してください
+      options:
+        - label: 既存の Discussions / Issues を確認しました
+          required: true
+        - label: この内容はこのカテゴリに適切です
+        - label: 必要なら追加情報を返信できます
+
+  # 8) upload
+  - type: upload
+    id: attachments
+    attributes:
+      label: 添付ファイル
+      description: スクリーンショット、ログ、サンプルファイルを添付してください
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.svg,.log,.txt,.json,.zip,.gz,.pdf"
+
+  # 9) markdown again
+  - type: markdown
+    attributes:
+      value: |
+        ### 送信前の補足
+        必須項目を埋めると投稿できます。ありがとうございます。
