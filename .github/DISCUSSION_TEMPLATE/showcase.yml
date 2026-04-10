@@ -1,0 +1,39 @@
+title: "[Showcase] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        作成したツールやワークフロー、成果物を共有するカテゴリです。
+        他の人が使いやすいように、概要と使い方を分かる形で書いてください。
+  - type: input
+    id: artifact-name
+    attributes:
+      label: 作成物の名前
+      description: 共有したいツールや成果物の名前を書いてください。
+      placeholder: "例: 帳票チェック補助ツール"
+    validations:
+      required: true
+  - type: textarea
+    id: overview
+    attributes:
+      label: 概要
+      description: 何をするものか、どんな場面で使うのかを書いてください。
+      placeholder: 利用目的、対象者、期待効果
+    validations:
+      required: true
+  - type: textarea
+    id: usage
+    attributes:
+      label: 使い方
+      description: 利用手順や必要な準備を書いてください。
+      placeholder: |
+        1. 準備
+        2. 実行方法
+        3. 出力結果
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: 関連リンク・補足
+      description: リポジトリ、資料、スクリーンショットのリンクなどがあれば記載してください。
