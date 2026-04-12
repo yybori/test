@@ -43,7 +43,7 @@ body:
         背景:
         課題:
         提案:
-      render: markdown # コードブロックにする場合は言語を指定(任意)
+      render: bash # コードブロックにする場合は言語を指定(任意)
     validations:
       # 必須項目にする場合はtrue、そうでないならfalse又は定義しない
       required: true
