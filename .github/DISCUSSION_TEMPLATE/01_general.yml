@@ -15,28 +15,65 @@ body:
         
         - リンクも貼れます。
           [Google](https://www.google.com)
-  - type: textarea
-    id: summary
+
+          
+  - type: input #typeをinputにする
+    id: short_summary # 一意に識別するIDを設定(任意)
     attributes:
-      label: 概要
-      description: まず何について共有するのかを簡潔に書いてください。
-      placeholder: 出張時の手続きや、チーム内でよく使うルールなど
+      label: 要約 # フォーム上の項目名
+      description: 一行で内容を説明してください # フィールドの下に表示する説明(任意)
+      placeholder: "例: ビルド高速化の提案" # フィールドが空の時に表示する内容(任意)
+      # value: "テキスト" # テキストが入力された状態にする場合は設定(任意)
     validations:
+      # 必須項目にする場合はtrue、そうでないならfalse又は定義しない
       required: true
-  - type: textarea
-    id: details
+
+      
+  - type: textarea #typeをinputにする
+    id: details # 一意に識別するIDを設定(任意)
     attributes:
-      label: 内容
-      description: 後から読む人が分かるように、背景や詳細を書いてください。
-      placeholder: |
-        - 何の情報か  
-        - どういう場面で役立つか  
-        - 補足事項  
+      label: 詳細 # フォーム上の項目名
+      description: 背景、現状、期待することを自由に記載してください # フィールドの下に表示する説明(任意)
+      placeholder: | # フィールドが空の時に表示する内容(任意)
+        例:
+        - 背景
+        - 課題
+        - 提案内容
+      value: | # テキストが入力された状態にする場合は設定(任意)
+        背景:
+        課題:
+        提案:
+      render: markdown # コードブロックにする場合は言語を指定(任意)
     validations:
+      # 必須項目にする場合はtrue、そうでないならfalse又は定義しない
       required: true
-  - type: textarea
-    id: references
+
+  - type: dropdown # typeをdropdownにする
+    id: affected_area # 一意に識別するIDを設定(任意)
     attributes:
-      label: 関連リンク・参考情報
-      description: 参考になる文書やリンクがあれば記載してください。
-      placeholder: SharePoint、Slackなど
+      label: 関連領域 # フォーム上の項目名
+      description: 該当する領域をすべて選択してください # フィールドの下に表示する説明(任意)
+      multiple: true # 複数選択を許可する場合はtrue、そうでないならfalse又は定義しない
+      options: # ドロップダウンの選択肢を定義
+        - Documentation
+        - CI
+        - Backend
+        - Frontend
+        - API
+        - Developer Experience
+      default: 0 # 選択肢のうち、デフォルトで選択されているもののインデックスを指定。複数選択の場合は配列で指定。(任意)
+    validations:
+      # 必須項目にする場合はtrue、そうでないならfalse又は定義しない
+      required: false
+
+  - type: checkboxes # typeをcheckboxesにする
+    id: confirmations # 一意に識別するIDを設定(任意)
+    attributes:
+      label: 確認事項 # フォーム上の項目名
+      description: 投稿前に確認してください # フィールドの下に表示する説明(任意)
+      options:
+        # それぞれの項目のラベルを定義
+        - label: 既存の Discussions / Issues を確認しました 
+          required: true # この項目を必須にする場合はtrue、そうでないならfalse又は定義しない
+        - label: この内容はこのカテゴリに適切です
+        - label: 必要なら追加情報を返信できます
