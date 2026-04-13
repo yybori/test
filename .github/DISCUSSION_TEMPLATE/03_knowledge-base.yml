@@ -10,25 +10,16 @@ body:
       label: 結論・要点
       description: まず最初に、何が分かったのかを簡潔に書いてください。
       placeholder: "例: ○○ の設定を変更することで解決した"
+      value: |
+        ## 背景
+        - 
+
+        ## やりたいこと
+        -
+
+               
     validations:
       required: true
-  - type: textarea
-    id: procedure
-    attributes:
-      label: 手順・詳細
-      description: 実際の手順や詳細な内容を書いてください。
-      placeholder: |
-        1. 前提条件
-        2. 実施手順
-        3. 注意点
-    validations:
-      required: true
-  - type: textarea
-    id: applicability
-    attributes:
-      label: 適用場面・注意点
-      description: どのようなケースで役立つか、注意点があれば書いてください。
-      placeholder: 対象バージョン、前提環境、制約など
   - type: textarea
     id: references
     attributes:
