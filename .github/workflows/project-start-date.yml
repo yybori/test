@@ -1,0 +1,246 @@
+name: Set Start date when Status leaves 新規
+
+on:
+  projects_v2_item:
+    types:
+      - edited
+
+permissions:
+  contents: read
+
+jobs:
+  set-start-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate event payload
+        id: validate
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECTS_TOKEN }}
+          script: |
+            const payload = context.payload;
+
+            core.info(`Event action: ${payload.action || ''}`);
+            core.info(`Top-level payload keys: ${Object.keys(payload).join(', ')}`);
+
+            const projectsItem = payload.projects_v2_item || payload.item || payload.project_item || null;
+            const changes = payload.changes || {};
+
+            if (!projectsItem) {
+              core.setFailed('Project item information was not found in the event payload.');
+              return;
+            }
+
+            core.setOutput('item_node_id', projectsItem.node_id || projectsItem.id || '');
+            core.setOutput('project_node_id', projectsItem.project_node_id || payload.project_node_id || '');
+            core.setOutput('content_node_id', projectsItem.content_node_id || projectsItem.content?.node_id || '');
+
+      - name: Inspect project item and update Start date
+        uses: actions/github-script@v7
+        env:
+          ITEM_NODE_ID: ${{ steps.validate.outputs.item_node_id }}
+          TARGET_PROJECT_OWNER: yybori
+          TARGET_PROJECT_NUMBER: "1"
+          TARGET_PROJECT_TITLE: カンバンテスト
+          TARGET_REPO: yybori/test
+          STATUS_FIELD_NAME: Status
+          START_DATE_FIELD_NAME: Start date
+          DEFAULT_STATUS_NAME: 新規
+        with:
+          github-token: ${{ secrets.PROJECTS_TOKEN }}
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+
+            const itemNodeId = process.env.ITEM_NODE_ID;
+            const targetOwner = process.env.TARGET_PROJECT_OWNER;
+            const targetProjectNumber = parseInt(process.env.TARGET_PROJECT_NUMBER, 10);
+            const targetProjectTitle = process.env.TARGET_PROJECT_TITLE;
+            const targetRepo = process.env.TARGET_REPO;
+            const statusFieldName = process.env.STATUS_FIELD_NAME;
+            const startDateFieldName = process.env.START_DATE_FIELD_NAME;
+            const defaultStatusName = process.env.DEFAULT_STATUS_NAME;
+
+            if (!itemNodeId) {
+              core.setFailed('ITEM_NODE_ID is empty.');
+              return;
+            }
+
+            const query = `
+              query($owner: String!, $number: Int!, $itemId: ID!) {
+                user(login: $owner) {
+                  projectV2(number: $number) {
+                    id
+                    title
+                    fields(first: 50) {
+                      nodes {
+                        ... on ProjectV2FieldCommon {
+                          id
+                          name
+                        }
+                        ... on ProjectV2SingleSelectField {
+                          id
+                          name
+                          options {
+                            id
+                            name
+                          }
+                        }
+                        ... on ProjectV2Field {
+                          id
+                          name
+                        }
+                      }
+                    }
+                    item(id: $itemId) {
+                      id
+                      content {
+                        __typename
+                        ... on Issue {
+                          id
+                          number
+                          title
+                          repository {
+                            nameWithOwner
+                          }
+                        }
+                      }
+                      fieldValues(first: 50) {
+                        nodes {
+                          __typename
+                          ... on ProjectV2ItemFieldSingleSelectValue {
+                            field {
+                              ... on ProjectV2FieldCommon {
+                                id
+                                name
+                              }
+                            }
+                            name
+                            optionId
+                            updatedAt
+                          }
+                          ... on ProjectV2ItemFieldDateValue {
+                            field {
+                              ... on ProjectV2FieldCommon {
+                                id
+                                name
+                              }
+                            }
+                            date
+                            updatedAt
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const result = await github.graphql(query, {
+              owner: targetOwner,
+              number: targetProjectNumber,
+              itemId: itemNodeId,
+            });
+
+            const project = result.user?.projectV2;
+            if (!project) {
+              core.setFailed(`Project not found: ${targetOwner} / #${targetProjectNumber}`);
+              return;
+            }
+
+            if (project.title !== targetProjectTitle) {
+              core.info(`Project title mismatch: expected=${targetProjectTitle}, actual=${project.title}`);
+              core.info('Skipping.');
+              return;
+            }
+
+            const item = project.item;
+            if (!item) {
+              core.info('Project item not found in target project. Skipping.');
+              return;
+            }
+
+            if (item.content?.__typename !== 'Issue') {
+              core.info(`Content type is ${item.content?.__typename}, not Issue. Skipping.`);
+              return;
+            }
+
+            if (item.content.repository?.nameWithOwner !== targetRepo) {
+              core.info(`Repository mismatch: ${item.content.repository?.nameWithOwner}`);
+              core.info('Skipping.');
+              return;
+            }
+
+            const fields = project.fields.nodes || [];
+            const statusField = fields.find(f => f?.name === statusFieldName);
+            const startDateField = fields.find(f => f?.name === startDateFieldName);
+
+            if (!statusField) {
+              core.setFailed(`Field not found: ${statusFieldName}`);
+              return;
+            }
+
+            if (!startDateField) {
+              core.setFailed(`Field not found: ${startDateFieldName}`);
+              return;
+            }
+
+            const fieldValues = item.fieldValues.nodes || [];
+
+            const statusValue = fieldValues.find(v =>
+              v?.__typename === 'ProjectV2ItemFieldSingleSelectValue' &&
+              v?.field?.name === statusFieldName
+            );
+
+            const currentStatus = statusValue?.name || '';
+            core.info(`Current status: ${currentStatus}`);
+
+            const changes = context.payload.changes || {};
+            const previousFieldValue =
+              changes?.field_value?.from?.name ||
+              changes?.fieldValue?.from?.name ||
+              changes?.field_value?.from ||
+              changes?.fieldValue?.from ||
+              '';
+
+            core.info(`Previous status from payload (best effort): ${previousFieldValue || '(unknown)'}`);
+
+            if (!previousFieldValue) {
+              core.info('Previous status could not be determined from payload. Skipping to avoid false updates.');
+              return;
+            }
+
+            if (previousFieldValue !== defaultStatusName) {
+              core.info(`Previous status is not ${defaultStatusName}. Skipping.`);
+              return;
+            }
+
+            if (!currentStatus || currentStatus === defaultStatusName) {
+              core.info(`Current status is empty or still ${defaultStatusName}. Skipping.`);
+              return;
+            }
+
+            const mutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $date: Date!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: $projectId
+                  itemId: $itemId
+                  fieldId: $fieldId
+                  value: { date: $date }
+                }) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            `;
+
+            await github.graphql(mutation, {
+              projectId: project.id,
+              itemId: item.id,
+              fieldId: startDateField.id,
+              date: today,
+            });
+
+            core.info(`Start date updated to ${today}.`);
